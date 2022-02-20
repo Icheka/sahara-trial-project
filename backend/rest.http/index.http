@@ -1,0 +1,4 @@
+# RESET DATABASE
+GET {{baseUrl}}/reset
+Content-Type: application/json
+###

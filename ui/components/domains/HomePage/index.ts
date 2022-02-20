@@ -1,2 +1,1 @@
-export * from "./LargeCarousel";
-export * from "./Sections";
+export * from "./Homepage";

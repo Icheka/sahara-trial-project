@@ -1,0 +1,25 @@
+# LOGIN
+POST {{baseUrl}}/admins/login
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "password"
+}
+###
+
+# LIST ADMINS (UNSAFE!)
+GET {{baseUrl}}/admins 
+Content-Type: application/json
+###
+
+# CREATE PRODUCT
+POST {{baseUrl}}/products 
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+###
+
+# LIST PRODUCTS
+GET {{baseUrl}}/products
+Authorization: Bearer {{adminToken}}
+###

@@ -1,0 +1,13 @@
+{
+    "rest-client.environmentVariables": {
+        "$shared": {},
+        "development": {
+            "baseUrl": "http://localhost:4000/api",
+            "customerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjEyYzdkZjI0MDRmMmE3OWY4MWViY2QiLCJlbWFpbCI6ImFiY2RAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjQ1Mzk4MDEzLCJleHAiOjE2NDc5OTAwMTN9.y55KYIIIMUKPv1g6OVbUNVTD1jrlaFz_JQQFhswPBRE",
+            "adminToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjEyYzVkNTcxYmIxMWI5ZWI3YzE0YjEiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY0NTM5NzQ3NiwiZXhwIjoxNjQ3OTg5NDc2fQ.aeASbC_uK4KMak6t_eiWssNyMWaNz6C4dL8ce0sg6Oc"
+        },
+        "test": {
+            "baseUrl": "http://localhost:4002/api"
+        }
+    }
+}
