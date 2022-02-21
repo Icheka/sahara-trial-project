@@ -8,17 +8,17 @@ export type FamilyHistoryType = {
 };
 
 export enum Gender {
-    male = "male",
-    female = "female",
-    preferNotToSay = "prefer not to say",
+    male = 'male',
+    female = 'female',
+    preferNotToSay = 'prefer not to say',
 }
 
 export enum SupportedEthnicities {
-    westAfrica = "west african",
-    northAfrica = "north africa",
-    eastAfrica = "east africa",
-    southAfrica = "south africa",
-    centralAfrica = "central africa",
+    westAfrica = 'west african',
+    northAfrica = 'north africa',
+    eastAfrica = 'east africa',
+    southAfrica = 'south africa',
+    centralAfrica = 'central africa',
 }
 
 export type CustomerType = {
@@ -34,4 +34,9 @@ export type CustomerType = {
     height: number;
     weight: number;
     familyHistory: FamilyHistoryType;
+};
+
+export type CustomerLoginPayload = {
+    email: string;
+    password: string;
 };

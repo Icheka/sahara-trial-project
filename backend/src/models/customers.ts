@@ -1,5 +1,26 @@
 import { model, Schema } from "mongoose";
-import { CustomerType } from "../types/models";
+import { CustomerType, FamilyHistoryType } from "../types/models";
+
+const familyHistory = new Schema<FamilyHistoryType>({
+    cardiovascular: {
+        type: String,
+    },
+    colorectalCancer: {
+        type: String,
+    },
+    gerd: {
+        type: String,
+    },
+    ibd: {
+        type: String,
+    },
+    nash: {
+        type: String,
+    },
+    t2dm: {
+        type: String,
+    },
+});
 
 const schema = new Schema<CustomerType>(
     {
@@ -24,6 +45,24 @@ const schema = new Schema<CustomerType>(
         password: {
             type: String,
             required: [true, "'password' is required"],
+        },
+        gender: {
+            type: String,
+        },
+        dob: {
+            type: Number,
+        },
+        ethnicity: {
+            type: String,
+        },
+        height: {
+            type: Number,
+        },
+        weight: {
+            type: Number,
+        },
+        familyHistory: {
+            type: familyHistory,
         },
     },
     {

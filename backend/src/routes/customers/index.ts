@@ -25,10 +25,10 @@ r.post(`/`, async (req, res) => {
 // @desc    Customer Sign in
 // @access  Public
 r.post(`/login`, async (req, res) => {
-    const [code, token] = await Customers.login(req.body);
+    const [code, data] = await Customers.login(req.body);
     switch (code) {
         case 0:
-            return res.send({ token });
+            return res.send({ data });
         case 1:
             return res.status(406).send({ message: `Invalid email or password!` });
 

@@ -1,7 +1,9 @@
 import { EmailValidationSchema } from "../../helpers/joi";
 import joi from "joi";
+import { Gender, SupportedEthnicities } from "../../types/models";
 
 const requiredString = joi.string().required();
+const requiredNumber = joi.number().required();
 
 export const CustomerValidations = {
     NewCustomer: joi.object({
@@ -10,5 +12,18 @@ export const CustomerValidations = {
         email: EmailValidationSchema.required(),
         country: requiredString,
         password: requiredString.min(6),
+        gender: requiredString.valid(...Object.values(Gender)),
+        dob: requiredNumber,
+        ethnicity: requiredString.valid(...Object.values(SupportedEthnicities)),
+        height: requiredNumber,
+        weight: requiredNumber,
+        familyHistory: joi.object({
+            cardiovascular: joi.string().optional(),
+            colorectalCancer: joi.string().optional(),
+            gerd: joi.string().optional(),
+            ibd: joi.string().optional(),
+            nash: joi.string().optional(),
+            t2dm: joi.string().optional(),
+        }),
     }),
 };

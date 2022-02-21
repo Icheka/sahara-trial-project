@@ -62,7 +62,7 @@ export class Customers {
             role: RequestUserRoles.customer,
         });
 
-        return [0, accessToken];
+        return [0, { token: accessToken, user: customer }];
     }
 
     // private methods

@@ -1,4 +1,11 @@
 export const routes = {
+    public: {
+        signin: `/signin`,
+        signup: `/signup`,
+        activate: {
+            index: `/activate`,
+        },
+    },
     admin: {
         index: `/admin`,
         createActivationCode: {
