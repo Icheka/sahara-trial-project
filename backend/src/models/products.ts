@@ -128,11 +128,11 @@ const schema = new Schema<ProductType>(
         },
         recentConditions: recentConditions,
         diet: {
-            type: String,
+            type: diet,
             required: false,
         },
         wellBeing: {
-            type: String,
+            type: wellBeing,
             required: false,
         },
     },

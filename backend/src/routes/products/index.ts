@@ -24,12 +24,12 @@ r.post(`/`, auth.adminAuth, async (req, res) => {
     });
 });
 
-// @route /api/products
+// @route /api/products/activate
 // @desc Create a new product
 // @access Private:Customer
-r.patch(`/:code/activate`, auth.customerAuth, async (req, res) => {
+r.patch(`/activate`, auth.customerAuth, async (req, res) => {
     const [status, message] = await Products.activate({
-        code: req.params.code as string,
+        ...req.body,
         userId: req.context.user!._id,
     });
 

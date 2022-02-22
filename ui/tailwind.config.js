@@ -13,6 +13,9 @@ module.exports = {
             fontFamily: {
                 'moon-dance': 'Moon Dance, cursive',
             },
+            fontSize: {
+              md: 16
+            }
         },
     },
     plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')],

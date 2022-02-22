@@ -37,10 +37,10 @@ export type ProductType = {
     _id: string;
     isActivated: boolean;
     activationCode: string;
-    user?: string;
-    onGoingMedication?: OnGoingMedicationType;
-    smoker?: string;
-    recentConditions?: RecentConditionsType;
-    diet?: DietType;
-    wellBeing?: WellBeingType;
+    user: string;
+    onGoingMedication: OnGoingMedicationType;
+    smoker: string;
+    recentConditions: RecentConditionsType;
+    diet: DietType;
+    wellBeing: WellBeingType;
 };

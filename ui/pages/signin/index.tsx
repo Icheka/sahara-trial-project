@@ -10,6 +10,11 @@ import { customerAuthForms } from 'const';
 import { AuthContext } from 'context';
 import { CustomerService } from 'services';
 import { ButtonSubmit } from 'components/base';
+import { PasswordField } from 'components/base/TextInput/Password';
+import { EmailField } from 'components/base/TextInput/Email';
+import Link from 'next/link';
+import { routes } from 'config';
+import { useRouter } from 'next/router';
 
 const SignInPage: NextPage = () => {
     return (
@@ -24,6 +29,7 @@ const SignInPage: NextPage = () => {
 const View: FunctionComponent = () => {
     // vars
     const authContext = useContext(AuthContext);
+    const router = useRouter();
 
     // state
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,11 +46,19 @@ const View: FunctionComponent = () => {
         }>
     ) => void | Promise<any> = async (values, { setSubmitting }) => {
         setIsSubmitting(true);
+        setSubmitting(true);
+
         const [status, data] = await CustomerService.login(values);
         if (status !== 0) return toast.error(data);
 
         authContext.updateContext({ ...authContext, accountType: 'customer', user: data });
         toast(`You have successfully logged in!`);
+
+        const url = new URL(window.location.href);
+        const redirectTo = url.searchParams.get('redirect-to');
+
+        const redirectPath = redirectTo ?? routes.public.activate.index;
+        router.push(redirectPath);
 
         setSubmitting(false);
         setIsSubmitting(false);
@@ -64,12 +78,11 @@ const View: FunctionComponent = () => {
                     </h2>
                     <p className="mt-2 text-center text-sm text-gray-600">
                         Or{' '}
-                        <a
-                            href="#"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                            start your journey to wellness
-                        </a>
+                        <Link href={routes.public.signup}>
+                            <a className="font-medium text-indigo-600 hover:text-indigo-500">
+                                start your journey to wellness
+                            </a>
+                        </Link>
                     </p>
                 </div>
 
@@ -84,59 +97,38 @@ const View: FunctionComponent = () => {
                             onSubmit={handleSubmit}
                         >
                             {(formik) => (
-                                <form
-                                    onSubmit={formik.handleSubmit}
-                                    className="space-y-6"
-                                    action="#"
-                                    method="POST"
-                                >
+                                <form onSubmit={formik.handleSubmit} className="space-y-6">
                                     <div>
-                                        <label
-                                            htmlFor="email"
-                                            className="block text-sm font-medium text-gray-700"
-                                        >
-                                            Email address
-                                        </label>
                                         <div className="mt-1">
-                                            <input
-                                                id="email"
-                                                type="email"
-                                                autoComplete="email"
+                                            <EmailField
+                                                label="Email address"
                                                 required
-                                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                {...formik.getFieldProps('email')}
-                                            />
-                                            {formik.errors['email'] &&
-                                                formik.touched['email'] && (
-                                                    <ErrorText
-                                                        text={formik.errors['email']}
-                                                    />
+                                                additionalInputProps={formik.getFieldProps(
+                                                    'email'
                                                 )}
+                                                error={
+                                                    formik.errors['email'] &&
+                                                    formik.touched['email'] &&
+                                                    formik.errors['email']
+                                                }
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label
-                                            htmlFor="password"
-                                            className="block text-sm font-medium text-gray-700"
-                                        >
-                                            Password
-                                        </label>
                                         <div className="mt-1">
-                                            <input
-                                                id="password"
-                                                type="password"
-                                                autoComplete="current-password"
+                                            <PasswordField
+                                                label="Password"
                                                 required
-                                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                {...formik.getFieldProps('password')}
-                                            />
-                                            {formik.errors['password'] &&
-                                                formik.touched['password'] && (
-                                                    <ErrorText
-                                                        text={formik.errors['password']}
-                                                    />
+                                                additionalInputProps={formik.getFieldProps(
+                                                    'password'
                                                 )}
+                                                error={
+                                                    formik.errors['password'] &&
+                                                    formik.touched['password'] &&
+                                                    formik.errors['password']
+                                                }
+                                            />
                                         </div>
                                     </div>
 
@@ -262,9 +254,5 @@ const View: FunctionComponent = () => {
         </>
     );
 };
-
-const ErrorText: FunctionComponent<{ text?: string }> = ({ children, text }) => (
-    <div className={`text-xs text-red-500 mt-1`}>{text ?? children}</div>
-);
 
 export default SignInPage;

@@ -5,7 +5,8 @@ import { NextPage } from 'next';
 const CreateActivationCodePage: NextPage = () => {
     // utils
     const generateQR = () => {
-        const qr = QRCode.generate({ text: 'https://github.com/icheka' });
+        if (typeof global.window === undefined) return;
+        const qr = QRCode.generate({ text: `${global.window?.location?.origin}/activate?activation-code=ACT-${''}` });
         return qr;
     };
 

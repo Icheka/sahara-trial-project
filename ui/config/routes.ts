@@ -1,6 +1,8 @@
 export const routes = {
     public: {
+        homepage: `/`,
         signin: `/signin`,
+        signinTo: (path: string) => `/signin?redirect-to=${path}`,
         signup: `/signup`,
         activate: {
             index: `/activate`,

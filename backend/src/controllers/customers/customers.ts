@@ -13,9 +13,21 @@ import { CustomerValidations } from "./validations";
  */
 export class Customers {
     /**
+     * fetch a Customer given a UUID
+     * @param id a customer account UUID
+     * @returns CustomerType if customer was found and there were no errors, else false if errors or null if no errors
+     */
+    public static async whoAmI(id: string) {
+        return await customers
+            .findById(id)
+            .then((data) => data)
+            .catch((err) => false);
+    }
+
+    /**
      *
      * @param payload a NewCustomer
-     * @returns |codes: 0 => successful, 1 => payload validation error, 2 => database error|
+     * @returns |codes: 0 => successful, 1 => payload validation error, 2 => user already exists|
      */
     public static async create(payload: NewCustomer) {
         // 1. validate payload
@@ -32,11 +44,11 @@ export class Customers {
         payload.password = hash!;
 
         // 3.
-        const customer = await customers
-            .create(payload)
-            .then((data) => data)
-            .catch((err) => null);
-        if (!customer) return [2, "An error occurred!"];
+        let customer = await Customers.findByEmail(payload.email);
+        if (customer) return [2, "A user account already exists with this email"];
+
+        customer = new customers(payload);
+        customer.save();
 
         // 4.
         return [0];

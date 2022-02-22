@@ -19,6 +19,7 @@ const handleAuthTokenErrors = (error: any) => {
 };
 const getToken = (): string | null => localStorage.getItem('auth');
 export const setAuthToken = (token: string) => localStorage.setItem('auth', token);
+export const getAuthToken = getToken;
 
 // https
 https.interceptors.request.use((req) => {

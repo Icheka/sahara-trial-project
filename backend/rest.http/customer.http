@@ -22,8 +22,10 @@ Content-Type: application/json
 ###
 
 # ACTIVATE PRODUCT
-PATCH {{baseUrl}}/products/mUCqQj3iVSrp/activate
+PATCH {{baseUrl}}/products/activate
 Content-Type: application/json
 Authorization: Bearer {{customerToken}}
 
-{}
+{
+    
+}

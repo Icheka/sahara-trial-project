@@ -1,7 +1,20 @@
 import { Customers } from "../../controllers";
 import { Router } from "express";
+import AuthMiddleware from "../../middleware/auth";
 export const CUSTOMERS_ROUTER = Router();
 const r = CUSTOMERS_ROUTER;
+const auth = AuthMiddleware;
+
+// @route   GET /api/customers/whoami
+// @desc    Fetch the current Customer
+// @access  Private::Customer
+r.get(`/whoami`, auth.customerAuth, async (req, res) => {
+    const data = await Customers.whoAmI(req.context.user!._id);
+
+    if (data === null) return res.sendStatus(406);
+    if (data === false) return res.sendStatus(500);
+    return res.send({ data });
+});
 
 // @route   POST /api/customers
 // @desc    Create Customer
@@ -12,9 +25,8 @@ r.post(`/`, async (req, res) => {
         case 0:
             return res.sendStatus(201);
         case 1:
-            return res.status(406).send({ message: data });
         case 2:
-            return res.status(500).send({ message: data });
+            return res.status(406).send({ message: data });
 
         default:
             break;

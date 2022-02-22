@@ -1,6 +1,6 @@
 import { EmailValidationSchema } from "../../helpers/joi";
 import joi from "joi";
-import { Gender, SupportedEthnicities } from "../../types/models";
+import { Gender } from "../../types/models";
 
 const requiredString = joi.string().required();
 const requiredNumber = joi.number().required();
@@ -14,7 +14,7 @@ export const CustomerValidations = {
         password: requiredString.min(6),
         gender: requiredString.valid(...Object.values(Gender)),
         dob: requiredNumber,
-        ethnicity: requiredString.valid(...Object.values(SupportedEthnicities)),
+        ethnicity: requiredString,
         height: requiredNumber,
         weight: requiredNumber,
         familyHistory: joi.object({

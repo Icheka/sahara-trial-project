@@ -1,3 +1,9 @@
+export enum SubjectiveAnswers {
+    yes = 'yes',
+    no = 'no',
+    notSure = "I'm not sure",
+}
+
 export type FamilyHistoryType = {
     cardiovascular?: string;
     colorectalCancer?: string;
@@ -13,14 +19,6 @@ export enum Gender {
     preferNotToSay = 'prefer not to say',
 }
 
-export enum SupportedEthnicities {
-    westAfrica = 'west african',
-    northAfrica = 'north africa',
-    eastAfrica = 'east africa',
-    southAfrica = 'south africa',
-    centralAfrica = 'central africa',
-}
-
 export type CustomerType = {
     _id: string;
     firstName: string;
@@ -30,7 +28,7 @@ export type CustomerType = {
     country: string;
     gender: Gender;
     dob: number;
-    ethnicity: SupportedEthnicities;
+    ethnicity: string;
     height: number;
     weight: number;
     familyHistory: FamilyHistoryType;
@@ -39,4 +37,18 @@ export type CustomerType = {
 export type CustomerLoginPayload = {
     email: string;
     password: string;
+};
+
+export type CustomerSignupPayload = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    country: string;
+    gender: Gender;
+    dob: number;
+    height: number;
+    weight: number;
+    familyHistory: FamilyHistoryType;
+    ethnicity: string;
 };

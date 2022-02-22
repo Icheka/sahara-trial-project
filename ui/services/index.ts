@@ -4,6 +4,12 @@ export const api = {
     // /api/customers
     customers: {
         login: `/customers/login`,
+        signup: `/customers`,
+        whoami: `/customers/whoami`,
+    },
+    // /api/products
+    product: {
+        activate: `/products/activate`,
     },
 };
 

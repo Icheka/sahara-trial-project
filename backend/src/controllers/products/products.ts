@@ -37,7 +37,8 @@ export class Products {
         // 4. return
 
         // 1.
-        const product = await Products.findByCode(payload.code);
+        if (payload.activationCode.startsWith("ACT-")) payload.activationCode = payload.activationCode.slice(4);
+        let product = await Products.findByCode(payload.activationCode);
         if (!product) return [1, "No Colonee product with this activation code"];
 
         // 2.
@@ -49,7 +50,9 @@ export class Products {
         // to determine that the user actually exists at the time of executing this request
         // I'll just go ahead and leave that out since this isn't a production project
         product.user = payload.userId;
-        (product as any).save();
+        delete (payload as any).userId;
+
+        await products.findByIdAndUpdate(product.id, { ...payload });
 
         // 4.
         return [0];
