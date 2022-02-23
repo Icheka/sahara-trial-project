@@ -1,3 +1,5 @@
+declare module "express";
+
 import express from "express";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
@@ -59,7 +61,7 @@ if (!port) throw `Application PORT must be defined!`;
 //     Admins.createIfNotExists();
 // });
 const server = app.listen(port, () => {
-    Log.log(`Listening at port ${port}`)
+    Log.log(`Listening at port ${port}`);
     Admins.createIfNotExists();
 });
 
