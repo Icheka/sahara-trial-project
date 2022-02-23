@@ -9,7 +9,7 @@ function classNames(...classes: Array<string>) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function Homepage() {
+export function Homepage() {
     return (
         <Page usePublicNav>
             <div className="bg-white">

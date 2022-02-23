@@ -1,5 +1,5 @@
 {
-    "name": "flng-backend",
+    "name": "saharatx-trial-project-backend",
     "version": "1.0.0",
     "description": "TypeScript + Node.js + MongoDB + Mongoose + Redis",
     "main": "index.js",
