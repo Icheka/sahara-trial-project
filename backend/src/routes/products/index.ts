@@ -5,6 +5,9 @@ const r = PRODUCTS_ROUTER;
 
 import auth from "../../middleware/auth";
 
+// @route GET /api/products
+// @desc Fetch all products
+// @access Private:Admin
 r.get(`/`, auth.adminAuth, async (req, res) => {
     const products = await Products.fetchAll();
 
@@ -13,7 +16,7 @@ r.get(`/`, auth.adminAuth, async (req, res) => {
     });
 });
 
-// @route /api/products
+// @route POST /api/products
 // @desc Create a new product
 // @access Private:Admin
 r.post(`/`, auth.adminAuth, async (req, res) => {

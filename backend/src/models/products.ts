@@ -118,7 +118,7 @@ const schema = new Schema<ProductType>(
             required: [true, "An activation code!"],
         },
         user: {
-            type: String,
+            type: Schema.Types.Mixed,
             required: false,
         },
         onGoingMedication: onGoingMedication,

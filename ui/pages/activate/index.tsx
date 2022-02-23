@@ -6,7 +6,7 @@ import { Formik, FormikHelpers, FormikProps } from 'formik';
 import { toast } from 'react-toastify';
 import capitalize from 'capitalize';
 
-import { Page } from 'components/layout';
+import { Page, SecureCustomerPage } from 'components/layout';
 import { activateProductForm, coloneeActivationCode } from 'const';
 import { AuthContext } from 'context';
 import { CustomerService } from 'services';
@@ -21,9 +21,13 @@ import { useEffect } from 'react';
 const ActivateProductPage: NextPage = () => {
     return (
         <Page usePublicNav>
-            <div className={``}>
-                <View />
-            </div>
+            <SecureCustomerPage
+                children={
+                    <div className={``}>
+                        <View />
+                    </div>
+                }
+            />
         </Page>
     );
 };

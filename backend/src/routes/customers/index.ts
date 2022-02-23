@@ -5,6 +5,15 @@ export const CUSTOMERS_ROUTER = Router();
 const r = CUSTOMERS_ROUTER;
 const auth = AuthMiddleware;
 
+// @route   GET /api/customers
+// @desc    Fetch all Customers
+// @access  Private::Admin
+r.get(`/`, auth.adminAuth, async (req, res) => {
+    const data = await Customers.fetchAll();
+
+    return res.send({ data });
+});
+
 // @route   GET /api/customers/whoami
 // @desc    Fetch the current Customer
 // @access  Private::Customer

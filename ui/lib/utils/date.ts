@@ -1,4 +1,42 @@
+interface IMonth {
+    long: string;
+    short: string;
+}
+
 export class DateUtil {
+    public static months: Array<IMonth> = [
+        { long: 'January', short: 'Jan' },
+        { long: 'February', short: 'Feb' },
+        { long: 'March', short: 'Mar' },
+        { long: 'April', short: 'Apr' },
+        { long: 'May', short: 'May' },
+        { long: 'June', short: 'Jun' },
+        { long: 'July', short: 'Jul' },
+        { long: 'August', short: 'Aug' },
+        { long: 'September', short: 'Sept' },
+        { long: 'October', short: 'Oct' },
+        { long: 'November', short: 'Nov' },
+        { long: 'December', short: 'Dec' },
+    ];
+
+    /**
+     * indexes DateUtil.months
+     * @param index the result of Date.getMonth()
+     * @returns an IMonth
+     */
+    public static getMonth(index: number) {
+        return DateUtil.months[index - 1];
+    }
+
+    /**
+     * converts a number to a Date object
+     * @param date time value of a Date object (in milliseconds) - the value of Date.getTime()
+     * @returns a Date object
+     */
+    public static numberToDate(date: number) {
+        return new Date(date);
+    }
+
     /**
      * converts a Date object to its number value
      * @param date a Date object

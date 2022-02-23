@@ -1,3 +1,6 @@
+import { Document } from "mongoose";
+import { CustomerType } from "./customers";
+
 export type WellBeingType = {
     memoryLoss?: string;
     depression?: string;
@@ -37,10 +40,10 @@ export type ProductType = {
     _id: string;
     isActivated: boolean;
     activationCode: string;
-    user: string;
-    onGoingMedication: OnGoingMedicationType;
-    smoker: string;
-    recentConditions: RecentConditionsType;
-    diet: DietType;
-    wellBeing: WellBeingType;
+    user?: string | (Document<any, any, CustomerType> & CustomerType & { _id: string }) | null;
+    onGoingMedication?: OnGoingMedicationType;
+    smoker?: string;
+    recentConditions?: RecentConditionsType;
+    diet?: DietType;
+    wellBeing?: WellBeingType;
 };

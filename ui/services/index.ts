@@ -1,4 +1,5 @@
 export * from './customer';
+export * from './admin';
 
 export const api = {
     // /api/customers
@@ -10,6 +11,18 @@ export const api = {
     // /api/products
     product: {
         activate: `/products/activate`,
+    },
+    // /api/admin
+    admin: {
+        login: `/admins/login`,
+        whoami: `/admins/whoami`,
+        products: {
+            fetchAll: `/products`,
+            create: `/products`,
+        },
+        customers: {
+            fetchAll: `/customers`,
+        },
     },
 };
 

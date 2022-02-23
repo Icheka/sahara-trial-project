@@ -13,8 +13,8 @@ const handleAuthTokenErrors = (error: any) => {
         error?.response?.status &&
         ACCESS_TOKEN_ERROR_STATUSES.includes(error?.response?.status)
     ) {
-        toast.error(`You must sign in to continue`);
-        location.href = routes.public.signin;
+        // toast.error(`You must sign in to continue`);
+        // location.href = routes.public.signin;
     }
 };
 const getToken = (): string | null => localStorage.getItem('auth');

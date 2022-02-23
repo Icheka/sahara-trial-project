@@ -3,10 +3,18 @@ import { Document } from "mongoose";
 import Randomstring from "randomstring";
 import { ProductType } from "../../types/models/products";
 import { ActivateProductPayload } from "./types";
+import customers from "../../models/customers";
 
 export class Products {
     public static async fetchAll() {
-        return await products.find();
+        const data = await products.find();
+        for (const product of data) {
+            if (product.user) {
+                const user = await customers.findById(product.user);
+                product.user = user;
+            }
+        }
+        return data;
     }
 
     public static async create() {
@@ -21,6 +29,8 @@ export class Products {
             activationCode: code,
         });
         product.save();
+
+        // await products.deleteMany();
 
         return product;
     }
@@ -45,14 +55,19 @@ export class Products {
         if (product.isActivated === true) return [2, "This Colonee product has already been activated"];
 
         // 3.
-        product.isActivated = true;
         // this next line is inherently (slightly) un-safe: validation logic should be present in the auth middleware
         // to determine that the user actually exists at the time of executing this request
         // I'll just go ahead and leave that out since this isn't a production project
-        product.user = payload.userId;
+        const userId = payload.userId;
         delete (payload as any).userId;
+        const p: any = {
+            ...payload,
+            isActivated: true,
+            user: userId,
+        };
+        product.markModified("user");
 
-        await products.findByIdAndUpdate(product.id, { ...payload });
+        await products.findByIdAndUpdate(product.id, { ...p });
 
         // 4.
         return [0];

@@ -13,6 +13,17 @@ import { CustomerValidations } from "./validations";
  */
 export class Customers {
     /**
+     * fetch all Customers
+     * @returns Array<CustomerType>
+     */
+    public static async fetchAll() {
+        return await customers
+            .find()
+            .then((data) => data)
+            .catch((err) => []);
+    }
+
+    /**
      * fetch a Customer given a UUID
      * @param id a customer account UUID
      * @returns CustomerType if customer was found and there were no errors, else false if errors or null if no errors

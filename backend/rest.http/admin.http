@@ -23,3 +23,8 @@ Authorization: Bearer {{adminToken}}
 GET {{baseUrl}}/products
 Authorization: Bearer {{adminToken}}
 ###
+
+# LIST CUSTOMERS
+GET {{baseUrl}}/customers
+Authorization: Bearer {{adminToken}}
+###

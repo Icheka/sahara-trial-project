@@ -1,3 +1,5 @@
+import { CustomerType } from './accounts';
+
 export type WellBeingType = {
     memoryLoss?: string;
     depression?: string;
@@ -37,7 +39,7 @@ export type ProductType = {
     _id: string;
     isActivated: boolean;
     activationCode: string;
-    user: string;
+    user: string | CustomerType;
     onGoingMedication: OnGoingMedicationType;
     smoker: string;
     recentConditions: RecentConditionsType;

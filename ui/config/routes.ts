@@ -10,8 +10,12 @@ export const routes = {
     },
     admin: {
         index: `/admin`,
-        createActivationCode: {
-            index: `/admin/activation-codes/create`,
+        products: {
+            index: `/admin/products`,
+        },
+        auth: {
+            index: `/admin/auth`,
+            signinTo: (path: string) => `/admin/auth?redirect-to=${path}`,
         },
     },
 };

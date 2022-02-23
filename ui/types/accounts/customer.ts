@@ -32,6 +32,8 @@ export type CustomerType = {
     height: number;
     weight: number;
     familyHistory: FamilyHistoryType;
+    createdAt: number;
+    updatedAt: number;
 };
 
 export type CustomerLoginPayload = {

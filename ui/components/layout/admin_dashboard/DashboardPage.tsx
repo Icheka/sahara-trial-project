@@ -12,26 +12,39 @@ import {
 } from '@heroicons/react/outline';
 import { classNames } from 'types/ui';
 import { routes } from 'config';
-
-const navigation = [
-    { name: 'Dashboard', href: routes.admin.index, icon: HomeIcon, current: true },
-    {
-        name: 'Create Activation Code',
-        href: routes.admin.createActivationCode.index,
-        icon: SearchCircleIcon,
-        current: false,
-    },
-    // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    // { name: 'Teams', href: '#', icon: UserGroupIcon, current: false },
-    // { name: 'Announcements', href: '#', icon: SpeakerphoneIcon, current: false },
-    // { name: 'Office Map', href: '#', icon: MapIcon, current: false },
-];
+import { SecureAdminPage } from '../page';
 
 export const AdminDashboard: FunctionComponent = ({ children }) => {
+    const isCurrentPath = (path: string) => {
+        const pathname = global.window?.location?.pathname ?? '';
+        return global.window ? pathname.endsWith(path) : false;
+    };
+
+    // vars
+    const navigation = [
+        {
+            name: 'Users',
+            href: routes.admin.index,
+            icon: HomeIcon,
+            current: isCurrentPath(routes.admin.index),
+        },
+        {
+            name: 'Products',
+            href: routes.admin.products.index,
+            icon: SearchCircleIcon,
+            current: isCurrentPath(routes.admin.products.index),
+        },
+        // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+        // { name: 'Teams', href: '#', icon: UserGroupIcon, current: false },
+        // { name: 'Announcements', href: '#', icon: SpeakerphoneIcon, current: false },
+        // { name: 'Office Map', href: '#', icon: MapIcon, current: false },
+    ];
+
+    // state
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
-        <>
+        <SecureAdminPage>
             <div className="h-screen flex border">
                 <Transition.Root show={sidebarOpen} as={Fragment}>
                     <Dialog
@@ -131,10 +144,10 @@ export const AdminDashboard: FunctionComponent = ({ children }) => {
                                             </div>
                                             <div className="ml-3">
                                                 <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                                                    Whitney Francis
+                                                    John Doe
                                                 </p>
                                                 <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
-                                                    View profile
+                                                    SaharaTx
                                                 </p>
                                             </div>
                                         </div>
@@ -201,10 +214,10 @@ export const AdminDashboard: FunctionComponent = ({ children }) => {
                                         </div>
                                         <div className="ml-3">
                                             <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                                Whitney Francis
+                                                John Doe
                                             </p>
                                             <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                                                View profile
+                                                SaharaTx
                                             </p>
                                         </div>
                                     </div>
@@ -253,6 +266,6 @@ export const AdminDashboard: FunctionComponent = ({ children }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </SecureAdminPage>
     );
 };

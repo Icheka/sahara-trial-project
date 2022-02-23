@@ -3,13 +3,13 @@ import { FunctionComponent, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { AuthContext } from 'context';
-import { CustomerService } from 'services';
-import { CustomerType } from 'types/accounts';
+import { AdminService } from 'services';
+import { AdminType } from 'types/accounts';
 import { routes } from 'config';
 import { PageLoading } from '../loading';
 import { IPage, Page } from '../Page';
 
-const WithCustomer: FunctionComponent<{ fallbackURL?: string }> = ({
+const WithAdmin: FunctionComponent<{ fallbackURL?: string }> = ({
     fallbackURL,
     children,
 }) => {
@@ -24,17 +24,17 @@ const WithCustomer: FunctionComponent<{ fallbackURL?: string }> = ({
     );
 
     // state
-    const [user, setUser] = useState<CustomerType | null>(null);
+    const [user, setUser] = useState<AdminType | null>(null);
     const [loading, setLoading] = useState(true);
 
     // utils
     const fetchUser = async () => {
-        const [status, data] = await CustomerService.whoami();
+        const [status, data] = await AdminService.whoami();
         if (status === 0) {
             updateContextWithDraft &&
                 updateContextWithDraft((draft) => {
                     draft.user = data;
-                    draft.accountType = 'customer';
+                    draft.accountType = 'admin';
                 });
             setUser(data);
         }
@@ -49,7 +49,7 @@ const WithCustomer: FunctionComponent<{ fallbackURL?: string }> = ({
     if (loading) return pageLoading;
 
     if (user === null) {
-        router.replace(routes.public.signinTo(fallbackURL));
+        router.replace(routes.admin.auth.signinTo(fallbackURL));
         // return page loading while processing redirection
         return pageLoading;
     }
@@ -57,12 +57,12 @@ const WithCustomer: FunctionComponent<{ fallbackURL?: string }> = ({
     return <>{children}</>;
 };
 
-export const SecureCustomerPage: FunctionComponent<IPage> = (props) => {
+export const SecureAdminPage: FunctionComponent<IPage> = (props) => {
     // vars
 
     return (
-        <WithCustomer>
+        <WithAdmin>
             <Page {...props} />
-        </WithCustomer>
+        </WithAdmin>
     );
 };

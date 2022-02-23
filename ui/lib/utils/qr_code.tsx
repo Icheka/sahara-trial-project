@@ -1,5 +1,4 @@
 import qrcode from 'qrcode-npm';
-import { ReactNode } from 'react';
 
 export class QRCode {
     public static generate({ text = '', size = 4 }: { text?: string; size?: number }) {

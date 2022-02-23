@@ -10,6 +10,13 @@ import SchemaValidator from "../../helpers/joi";
 import Logger from "../../lib/logger";
 
 export class Admins {
+    public static async whoami(id: string) {
+        return await admins
+            .findById(id)
+            .then((data) => data)
+            .catch((err) => null);
+    }
+
     /**
      *
      * @param payload an AdminLoginPayload
@@ -38,7 +45,7 @@ export class Admins {
             role: RequestUserRoles.admin,
         });
 
-        return [0, accessToken];
+        return [0, { token: accessToken, user: admin }];
     }
 
     public static async createIfNotExists(): Promise<any> {
