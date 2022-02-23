@@ -4,14 +4,15 @@
     "description": "TypeScript + Node.js + MongoDB + Mongoose + Redis",
     "main": "index.js",
     "scripts": {
-        "start": "npm run build && node build/app.js",
+        "start": "node build/app.js",
         "start:dev": "nodemon",
         "dev": "nodemon",
         "start:test": "npm run build && node build/app.js test.env",
         "build": "rimraf ./build && tsc",
         "types": "types-installer interactive",
         "lint": "eslint .",
-        "test": "mocha ./src/tests/**/*.js --recursive"
+        "test": "mocha ./src/tests/**/*.js --recursive",
+        "postinstall": "npm run build"
     },
     "repository": {
         "type": "git",
@@ -82,24 +83,6 @@
         "plaid": "^9.3.0",
         "randomstring": "^1.2.1",
         "request-ip": "^2.1.3",
-        "typescript": "^4.5.5",
-        "@types/chai": "^4.3.0",
-        "@types/cookie-parser": "^1.4.2",
-        "@types/cors": "^2.8.12",
-        "@types/express": "^4.17.13",
-        "@types/jsonwebtoken": "^8.5.7",
-        "@types/mongoose": "^5.11.97",
-        "@types/morgan": "^1.9.3",
-        "@types/node": "^17.0.8",
-        "@types/request-ip": "^0.0.37",
-        "@typescript-eslint/eslint-plugin": "^5.9.1",
-        "@typescript-eslint/parser": "^5.9.1",
-        "chai": "^4.3.4",
-        "eslint": "^8.6.0",
-        "mocha": "^9.1.4",
-        "nodemon": "^2.0.15",
-        "rimraf": "^3.0.2",
-        "supertest": "^6.2.1",
-        "ts-node": "^10.4.0"
+        "typescript": "^4.5.5"
     }
 }
