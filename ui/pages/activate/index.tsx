@@ -166,7 +166,7 @@ const View: FunctionComponent = () => {
         // handle QR codes
         const url = new URL(window.location.href);
         const { searchParams } = url;
-        const code = searchParams.get('activation-code');
+        const code = searchParams.get('q');
 
         if (code === null) return;
 

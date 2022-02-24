@@ -54,7 +54,7 @@ const AdminIndexPage: NextPage = () => {
                                 };
                                 const v = registration.value as Date;
                                 registration.day = v.getDate().toString();
-                                registration.month = DateUtil.getMonth(v.getMonth()).long;
+                                registration.month = DateUtil.getMonth(v.getMonth())?.long ?? '';
                                 registration.year = v.getFullYear().toString();
                                 registration.toString = () =>
                                     `${registration.day} ${registration.month}, ${registration.year}`;

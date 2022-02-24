@@ -42,7 +42,7 @@ const View: FunctionComponent = () => {
         setProducts([data, ...products]);
 
         const qr = QRCode.generate({
-            text: `${process.env.NEXT_PUBLIC_ACTIVATION_URL}/activate?activation-code=ACT-${code}`,
+            text: `${process.env.NEXT_PUBLIC_ACTIVATION_URL}?q=${code}`,
         });
 
         setQr(qr);
