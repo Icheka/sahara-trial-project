@@ -26,5 +26,7 @@ export const api = {
     },
 };
 
-export const networkError = (err: any) =>
-    err.response?.data?.message ?? `An error occurred!`;
+export const networkError = (err: any) => {
+    console.log(err);
+    return err.response?.data?.message ?? `An error occurred!`;
+};
