@@ -32,6 +32,7 @@ https.interceptors.request.use((req) => {
         newURL.pathname = path;
         req.url = newURL.toString();
     }
+    console.log(req.url);
 
     const token = getToken();
     req.headers!.Authorization = `Bearer ${token}`;
