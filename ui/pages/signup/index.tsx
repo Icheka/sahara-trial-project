@@ -73,9 +73,11 @@ const View: FunctionComponent = () => {
         if (step < finalStep) return setIsSubmitting(false);
 
         const [status, data] = await CustomerService.signup(values);
+
+        setSubmitting(false);
+        setIsSubmitting(false);
+
         if (status !== 0) {
-            setSubmitting(false);
-            setIsSubmitting(false);
             return toast.error(data);
         }
 
@@ -91,9 +93,6 @@ const View: FunctionComponent = () => {
         setTimeout(() => {
             router.push(routes.public.signin);
         }, 4000);
-
-        setSubmitting(false);
-        setIsSubmitting(false);
     };
     const handleDateFieldChange = (value: string, type: 'day' | 'month' | 'year') => {
         if (value.trim().length === 0) return formikConstant.setFieldValue('dob', 0);

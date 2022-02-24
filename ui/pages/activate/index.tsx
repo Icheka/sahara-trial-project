@@ -170,6 +170,8 @@ const View: FunctionComponent = () => {
 
         if (code === null) return;
 
+        if (!code.match(coloneeActivationCode.pattern)) return;
+
         formikConstant.setFieldValue('activationCode', code);
         setStep(3);
     }, []);

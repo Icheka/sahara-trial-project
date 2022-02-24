@@ -49,6 +49,10 @@ const View: FunctionComponent = () => {
         setSubmitting(true);
 
         const [status, data] = await CustomerService.login(values);
+
+        setSubmitting(false);
+        setIsSubmitting(false);
+        
         if (status !== 0) return toast.error(data);
 
         authContext.updateContext({ ...authContext, accountType: 'customer', user: data });
@@ -59,9 +63,6 @@ const View: FunctionComponent = () => {
 
         const redirectPath = redirectTo ?? routes.public.activate.index;
         router.push(redirectPath);
-
-        setSubmitting(false);
-        setIsSubmitting(false);
     };
 
     return (
