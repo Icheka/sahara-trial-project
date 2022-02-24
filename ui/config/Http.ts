@@ -32,7 +32,6 @@ https.interceptors.request.use((req) => {
         newURL.pathname = path;
         req.url = newURL.toString();
     }
-    console.log(process.env.NEXT_PUBLIC_API_URL!);
 
     const token = getToken();
     req.headers!.Authorization = `Bearer ${token}`;

@@ -27,6 +27,6 @@ export const api = {
 };
 
 export const networkError = (err: any) => {
-    console.log(err);
+    console.log(err, process.env.NEXT_PUBLIC_API_URL!);
     return err.response?.data?.message ?? `An error occurred!`;
 };
