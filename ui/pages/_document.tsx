@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
     render() {
         return (
-            <Html className={``}>
+            <Html className={`h-screen overflow-y-hidden`}>
                 <Head>
                     <link rel="icon" href="/favicon.ico" />
                     {/* Google Fonts  */}
@@ -24,7 +24,7 @@ class MyDocument extends Document {
                         rel="stylesheet"
                     />
                 </Head>
-                <body className={`min-h-screen`}>
+                <body className={`h-screen`}>
                     <Main />
                     <NextScript />
                 </body>

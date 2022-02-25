@@ -1,7 +1,10 @@
+import Link from 'next/link';
+
 import { InboxIcon, SparklesIcon } from '@heroicons/react/outline';
 
 import { Page } from 'components/layout';
 import { PublicPageNavs } from 'const';
+import { routes } from 'config';
 
 const { features, metrics, footerNavigation } = PublicPageNavs;
 
@@ -33,7 +36,7 @@ export function Homepage() {
                                             Take control of your
                                         </span>
                                         <span className="block text-indigo-200">
-                                            customer support
+                                            health
                                         </span>
                                     </h1>
                                     <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
@@ -43,12 +46,11 @@ export function Homepage() {
                                     </p>
                                     <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                                         <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                                            <a
-                                                href="#"
-                                                className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                                            >
-                                                Get started
-                                            </a>
+                                            <Link href={routes.public.signup}>
+                                                <a className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8">
+                                                    Get started
+                                                </a>
+                                            </Link>
                                             <a
                                                 href="#"
                                                 className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
@@ -66,7 +68,8 @@ export function Homepage() {
                     <div className="bg-gray-100">
                         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
                             <p className="text-center text-sm font-semibold uppercase text-gray-500 tracking-wide">
-                                Trusted by over 5 very average small businesses
+                                Endorsed by medical practitioners from over 30 countries in
+                                Africa
                             </p>
                             <div className="mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
                                 <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
@@ -114,7 +117,7 @@ export function Homepage() {
                             aria-hidden="true"
                             className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-100"
                         />
-                        <div className="relative">
+                        <div className="relative hidden">
                             <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
                                 <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
                                     <div>
@@ -201,7 +204,7 @@ export function Homepage() {
                                         </div>
                                         <div className="mt-6">
                                             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                                                Better understand your customers
+                                                Better understand your health
                                             </h2>
                                             <p className="mt-4 text-lg text-gray-500">
                                                 Semper curabitur ullamcorper posuere nunc
@@ -212,12 +215,11 @@ export function Homepage() {
                                                 tellus ornare pharetra.
                                             </p>
                                             <div className="mt-6">
-                                                <a
-                                                    href="#"
-                                                    className="inline-flex bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700"
-                                                >
-                                                    Get started
-                                                </a>
+                                                <Link href={routes.public.signup}>
+                                                    <a className="inline-flex bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700">
+                                                        Get started
+                                                    </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -296,7 +298,7 @@ export function Homepage() {
                                     </span>
                                 </h2>
                                 <p className="mt-3 text-3xl font-extrabold text-white">
-                                    Get actionable data that will help grow your business
+                                    Rhoncus sagittis risus arcu erat lectus bibendum. Ut in
                                 </p>
                                 <p className="mt-5 text-lg text-gray-300">
                                     Rhoncus sagittis risus arcu erat lectus bibendum. Ut in
@@ -340,12 +342,11 @@ export function Homepage() {
                                 >
                                     Learn more
                                 </a>
-                                <a
-                                    href="#"
-                                    className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100"
-                                >
-                                    Get started
-                                </a>
+                                <Link href={routes.public.signup}>
+                                    <a className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100">
+                                        Get started
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -477,7 +478,7 @@ export function Homepage() {
                                 ))}
                             </div>
                             <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-                                &copy; 2020 Workflow, Inc. All rights reserved.
+                                &copy; {new Date().getFullYear()} SaharaTx, Inc. All rights reserved.
                             </p>
                         </div>
                     </div>

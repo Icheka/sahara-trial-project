@@ -19,7 +19,7 @@ export const Page: FunctionComponent<IPage> = ({
 }) => {
     return (
         <div
-            className={`h-screen ${!noScroll ? 'overflow-y-scroll' : 'overflow-y-hidden'}`}
+            className={`h-screen ${!noScroll ? 'overflow-y-auto' : 'overflow-y-hidden'}`}
         >
             <Head>
                 <title>{title}</title>
