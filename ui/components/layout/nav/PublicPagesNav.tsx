@@ -159,7 +159,7 @@ export const PublicPagesNav: FunctionComponent = () => {
                                     </div>
                                 </div>
                                 <div className="mt-6">
-                                    <nav className="grid grid-cols-1 gap-7">
+                                    <nav className="grids grid-cols-1 gap-7 hidden">
                                         {solutions.map((item) => (
                                             <a
                                                 key={item.name}
@@ -181,7 +181,7 @@ export const PublicPagesNav: FunctionComponent = () => {
                                 </div>
                             </div>
                             <div className="py-6 px-5">
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 gap-4">
                                     <a
                                         href="#"
                                         className="text-base font-medium text-gray-900 hover:text-gray-700"
@@ -208,11 +208,16 @@ export const PublicPagesNav: FunctionComponent = () => {
                                         </a>
                                     </Link>
                                     <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                        Existing customer?
+                                        Existing customer?{' '}
                                         <Link href={routes.public.signin}>
                                             <a className="text-gray-900">Sign in</a>
                                         </Link>
                                     </p>
+                                    <Link href={routes.public.activate.index}>
+                                        <a className="w-full flex items-center mt-8 justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-indigo-700">
+                                            Activate Colonee kit
+                                        </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
